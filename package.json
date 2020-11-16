@@ -1,0 +1,31 @@
+{
+  "name": "vale-route-planner",
+  "version": "1.0.0",
+  "description": "VALE Route Planner",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest --watch-all --verbose",
+    "start": "node index.js"
+  },
+  "engines": {
+    "node": "12.18.3"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/joao-vasconcelos/vale-route-planner.git"
+  },
+  "author": "João de Vasconcelos",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/joao-vasconcelos/vale-route-planner/issues"
+  },
+  "homepage": "https://github.com/joao-vasconcelos/vale-route-planner#readme",
+  "dependencies": {
+    "config": "^3.3.2",
+    "google-spreadsheet": "^3.0.13",
+    "npm": "^6.14.8"
+  },
+  "devDependencies": {
+    "jest": "^26.6.3"
+  }
+}

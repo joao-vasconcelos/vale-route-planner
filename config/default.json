@@ -1,0 +1,10 @@
+{
+  "secrets": {
+    "google-service-account-email": "envar",
+    "google-service-account-private-key": "envar"
+  },
+  "spreadsheets": {
+    "document-id": "1I8kHtwwSa7vXYUcqPWZmaS4Wgoir6nyDmfwtzLj6D6g",
+    "sheet-id": "328048431"
+  }
+}

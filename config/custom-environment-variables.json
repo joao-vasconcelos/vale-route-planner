@@ -1,0 +1,6 @@
+{
+  "secrets": {
+    "google-service-account-email": "googleServiceAccountEmail",
+    "google-service-account-private-key": "googleServiceAccountPrivateKey"
+  }
+}
