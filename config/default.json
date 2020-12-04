@@ -6,5 +6,8 @@
   "spreadsheets": {
     "document-id": "1I8kHtwwSa7vXYUcqPWZmaS4Wgoir6nyDmfwtzLj6D6g",
     "sheet-id": "328048431"
+  },
+  "settings": {
+    "vehicle-capacity": 20
   }
 }

@@ -8,6 +8,7 @@
 /* IMPORTS */
 //const config = require("config");
 const fs = require("fs");
+const config = require("config");
 const spreadsheetAPI = require("./services/spreadsheetAPI");
 
 /* * */
@@ -29,24 +30,31 @@ const spreadsheetAPI = require("./services/spreadsheetAPI");
   const rows = await spreadsheetAPI.getRows();
 
   let jobsToBeOptimized = [];
+  let capacity = 0;
+  let id = 1;
+  let serviceDuration = 0;
 
   for (const row of rows) {
+    if (capacity > config.get("settings.vehicle-capacity")) break;
     jobsToBeOptimized.push({
-      service: row.service,
-      delivery: row.delivery,
-      pickup: row.pickup,
-      lon: row.lon,
-      lat: row.lat,
+      id: Number(id++),
+      description: row.description,
+      service: Number(row.service),
+      delivery: [Number(row.delivery)],
+      pickup: [Number(row.pickup)],
+      location: [Number(row.lon), Number(row.lat)],
     });
+    capacity += Number(row.pickup);
+    serviceDuration += Number(row.service);
   }
 
   const fileData = {
     vehicles: [
       {
         id: 1,
-        start: [-9.18967, 38.71203],
-        end: [-9.18967, 38.71203],
-        capacity: [10],
+        start: [-9.18225, 38.70607],
+        end: [-9.18225, 38.70607],
+        capacity: [config.get("settings.vehicle-capacity")],
       },
     ],
     jobs: jobsToBeOptimized,
@@ -66,8 +74,12 @@ const spreadsheetAPI = require("./services/spreadsheetAPI");
 
   console.log();
   console.log("- - - - - - - - - - - - - - - - - - - -");
-  console.log("Done! Shutting down...");
-
+  console.log("Done!");
+  console.log("Total service duration: " + serviceDuration / 60 + " minutes.");
+  console.log("- - - - - - - - - - - - - - - - - - - -");
+  console.log();
+  console.log("- - - - - - - - - - - - - - - - - - - -");
+  console.log("Shutting down...");
   console.log("Operation took " + getDuration(startTime) / 1000 + " seconds.");
   console.log("- - - - - - - - - - - - - - - - - - - -");
   console.log();
