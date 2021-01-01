@@ -8,6 +8,7 @@
     "sheet-id": "328048431"
   },
   "settings": {
-    "vehicle-capacity": 20
+    "vehicle-capacity": 20,
+    "starting-location": [-9.18225, 38.70607]
   }
 }
