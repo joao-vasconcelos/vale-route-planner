@@ -6,15 +6,11 @@
 
 /* * */
 /* IMPORTS */
-//const config = require("config");
 const fs = require('fs');
 const config = require('config');
 const spreadsheetAPI = require('./services/spreadsheetAPI');
 
 /* * */
-/* At program initiation all stores are retrieved from the database */
-/* and, for each store, orders are retrieved from Square API. */
-/* Each order is formated into a Transaction and saved to the database. */
 (async () => {
   // Store start time for logging purposes
   const startTime = process.hrtime();
@@ -37,10 +33,10 @@ const spreadsheetAPI = require('./services/spreadsheetAPI');
   let serviceDuration = 0;
 
   for (const row of rows) {
-    // If place doesn't need to be visited
+    // Continue, if place doesn't need to be visited
     if (Number(row.pickup) < 1 && Number(row.delivery) < 1) continue;
 
-    // Create New Vehicle if capacity exceeds
+    // Create new Vehicle if capacity exceeds
     if (capacity > config.get('settings.vehicle-capacity') || vehicleID == 1) {
       vehiclesList.push({
         id: Number(vehicleID++),
